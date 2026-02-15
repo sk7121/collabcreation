@@ -1,0 +1,32 @@
+<%- include("../partials/header", {title: "Projects" })%>
+<h3>Projects</h3>
+
+<%if(project.status === 'assigned'){%>
+<div class="card project-card">
+  <h3>
+    <%= project.assignedcreator.user.name %>
+  </h3>
+
+  <a href="/brand/creator/chat/<%= project._id %>/<%= project.assignedcreator._id %>" class="project-link">
+    Chat to Creator
+  </a>
+  <a href="/brand/project/unassign/<%=project._id%>/<%=project.assignedcreator._id%>" class="btn assign">Remove</a>
+</div>
+<%} else {%>
+
+<% creators.forEach(creator=> { %>
+<div class="card project-card">
+  <h3>
+    <%= creator.user.name %>
+  </h3>
+
+  <a href="/brand/creator/chat/<%= project._id %>/<%= creator._id %>" class="project-link">
+    Chat to Creator
+  </a>
+  <a href="/brand/project/assign/<%=project._id%>/<%=creator._id%>" class="btn assign">Assign</a>
+</div>
+<% }) %>
+
+<%}%>
+
+<%- include("../partials/footer")%>

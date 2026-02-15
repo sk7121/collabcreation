@@ -1,0 +1,16 @@
+<%- include('../partials/header', { title: "Admin Dashboard" }) %>
+
+<h2>Admin Dashboard</h2>
+
+
+<h3>New Creator Authentication Requests</h3>
+
+<% unverifiedUsers.forEach(user => { %>
+<div class="card admin-card">
+  <h4><%= user.name %></h4>
+  <p>isVerified: <%= user.isVerified %></p>
+  <a href="/admin/creator/details/<%= user._id %>">View Details</a>
+</div>
+<% }) %>
+
+<%- include('../partials/footer') %>

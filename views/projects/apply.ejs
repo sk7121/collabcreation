@@ -1,0 +1,12 @@
+<%- include('../partials/header', { title: "Apply Project" }) %>
+
+
+<h2><%= project.title %></h2>
+<p><%= project.description %></p>
+
+<form action="/projects/<%= project._id %>/apply" method="POST">
+  <textarea name="pitch" placeholder="Why are you best for this?" required></textarea>
+  <button>Submit Application</button>
+</form>
+
+<%- include('../partials/footer') %>

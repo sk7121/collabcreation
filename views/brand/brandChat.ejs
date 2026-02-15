@@ -1,0 +1,18 @@
+<%- include("../partials/header",{title:"Chat"})%>
+<h3>
+  <%=project.title%>
+</h3>
+<div class="card">
+  <ul>
+    <%messages.forEach(message=>{%>
+    <li class="<%= message.sender.role === 'brand' ? 'sender-msg' : 'receiver-msg' %>">
+      <%= message.content %>
+    </li>
+    <%})%>
+  </ul>
+  <form action="/brand/creator/chat/<%=project._id%>/<%=creatorId%>" method="POST">
+    <input type="text" name="message" placeholder="message" autofocus required>
+  </form>
+</div>
+
+<%- include("../partials/footer")%>

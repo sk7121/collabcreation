@@ -1,0 +1,25 @@
+<%- include('../partials/header', { title: "Login" }) %>
+
+<a href="/admin/login" class="btn admin-btn">Admin Login</a>
+
+<% if (success && success.length > 0) { %>
+<div class="alert alert-success">
+  <%= success[0] %>
+</div>
+<% } %>
+
+<div class="auth-box">
+  <% if (error && error.length > 0) { %>
+  <div class="alert alert-danger">
+    <%= error[0] %>
+  </div>
+  <% } %>
+  <h2>Login</h2>
+  <form action="/login" method="POST">
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="password" name="password" placeholder="Password" required />
+    <button type="submit">Login</button>
+  </form>
+
+  <p>New here? <a href="/register">Create account</a></p>
+</div>

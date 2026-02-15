@@ -1,0 +1,69 @@
+<%- include('../partials/header', { title: "Creator Dashboard" }) %>
+
+
+<h2>Welcome, <%= user.name %>
+</h2>
+<% if (!user.isOnboarded) { %>
+<a href="/creator/onboarding">Please Complete Onboard</a>
+<% } %>
+
+<% if (!user.isVerified) { %>
+<p class="warning">Your profile is under verification ⏳</p>
+<% } else { %>
+<p class="success">Verified Creator ✔</p>
+
+
+<h3>Available Projects</h3>
+<%if(applications.length>0 || remainings.length > 0){%>
+<% applications.forEach(application=> { %>
+<div class="card creator-card">
+  <div>
+    <h4>
+      <%= application.project.title %>
+    </h4>
+    <p>
+      <%= application.project.description %>
+    </p>
+    <p>Budget: ₹<%= application.project.budget %>
+    </p>
+  </div>
+  <h4>
+    <%= application.project.status==='assigned' &&
+                    application.project.assignedcreator.user.toString()===user._id.toString() ? `status :
+                    ${application.project.status} to you` : `status : ${application.project.status}` %>
+  </h4>
+
+  <%if(application.project.status==='assigned' &&
+                  application.project.assignedcreator.user.toString()===user._id.toString()) {%>
+  <form action="/creator/project/assign/<%=application.project._id%>" method="post">
+    <input type="file" id="video" class="file-input" accept="video/*" />
+
+    <label for="video" class="file-label">
+      Upload Video
+    </label>
+
+    <span id="file-name">No video selected</span>
+
+  </form>
+  <%}%>
+
+  <a href="/brand/creator/chat/<%=application.project._id%>/<%=creator._id%>" class="btn">Chat to Brand</a>
+</div>
+<% }) %>
+
+<% remainings.forEach(project=> { %>
+<div class="card">
+  <h4>
+    <%= project.title %>
+  </h4>
+  <p>
+    <%= project.description %>
+  </p>
+  <p>Budget: ₹<%= project.budget %>
+  </p>
+  <a href="/projects/<%= project._id %>">Apply</a>
+</div>
+<% }) %>
+<% } %>
+<%}%>
+                        <%- include('../partials/footer') %>

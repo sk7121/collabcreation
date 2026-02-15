@@ -1,0 +1,67 @@
+<%- include('../partials/header', { title: "Admin Creator Details" }) %>
+
+<div class="admin-container">
+
+  <div class="admin-header">
+    <h2>Creator Review Panel</h2>
+    <a href="/admin/creator/verify/<%= user._id %>" class="btn verify-btn">
+      ✓ Verify Creator
+    </a>
+  </div>
+
+  <div class="admin-card">
+
+    <h3>Basic Information</h3>
+    <p><strong>Name:</strong> <%= user.name %></p>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <p><strong>Bio:</strong> <%= creator.bio %></p>
+
+    <h3>Skills</h3>
+    <div class="skills">
+      <% creator.skills.forEach(skill => { %>
+      <span class="skill-badge"><%= skill %></span>
+      <% }) %>
+    </div>
+
+    <h3>First Reel</h3>
+    <% if (creator.firstReel) { %>
+    <div class="video-wrapper">
+      <video controls preload="metadata">
+        <source src="/<%= creator.firstReel %>">
+      </video>
+    </div>
+    <% } else { %>
+    <p>No reel uploaded.</p>
+    <% } %>
+
+    <h3>Portfolio Links</h3>
+    <ul class="portfolio-list">
+      <% creator.portfolioLinks.forEach((link, index) => { %>
+      <li>
+        <a href="<%= link %>" target="_blank">
+          Portfolio Link <%= index + 1 %>
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+
+    <h3>Social Media</h3>
+    <div class="social-links">
+      <% if (creator.socialLinks.instagram) { %>
+      <a href="<%= creator.socialLinks.instagram %>" target="_blank">Instagram</a>
+      <% } %>
+
+      <% if (creator.socialLinks.youtube) { %>
+      <a href="<%= creator.socialLinks.youtube %>" target="_blank">YouTube</a>
+      <% } %>
+
+      <% if (creator.socialLinks.tiktok) { %>
+      <a href="<%= creator.socialLinks.tiktok %>" target="_blank">TikTok</a>
+      <% } %>
+    </div>
+
+  </div>
+
+</div>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,43 @@
+<%- include('../partials/header', { title: "Creator Onboarding" }) %>
+
+
+<h2>Creator Onboarding</h2>
+
+<form action="/creator/onboarding" method="POST">
+
+  <label>Skills</label>
+  <input type="text" name="skills" placeholder="Skills" />
+
+  <label>Short Bio</label>
+  <textarea name="bio"></textarea>
+
+  <label>Portfolio Links (2-3)</label>
+  <input type="url" name="portfolio[]" />
+  <input type="url" name="portfolio[]" />
+  <input type="url" name="portfolio[]" />
+
+  <%# <label>Upload First Reel</label>
+  <input type="file" name="firstReel" required /> %>
+
+  <label>Instagram Profile</label>
+  <input type="url" name="instagram" />
+
+  <label>Youtube Profile</label>
+  <input type="url" name="youtube" />
+
+  <%# <label>Tik Tok Profile</label>
+  <input type="url" name="tiktok" /> %>
+
+  <label>Aadhaar</label>
+  <input type="text" name="aadhaar" required />
+
+  <label>PAN</label>
+  <input type="text" name="pan" required />
+
+  <label>Bank Account</label>
+  <input type="text" name="bank" required />
+
+  <button>Submit for Verification</button>
+</form>
+
+<%- include('../partials/footer') %>

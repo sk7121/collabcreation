@@ -1,0 +1,20 @@
+<%- include('../partials/header', { title: "Brand Verification" }) %>
+
+
+<h2>Brand Verification</h2>
+
+<form action="/brand/onboarding" method="POST">
+
+  <input type="text" name="companyName" placeholder="Company Name" required />
+  <input type="text" name="address" placeholder="Company Address" required />
+
+  <input type="text" name="pan" placeholder="PAN" />
+  <input type="text" name="gst" placeholder="GST" />
+  <input type="text" name="cin" placeholder="CIN" />
+
+  <input type="text" name="bank" placeholder="Bank Account" required />
+
+  <button>Submit for Verification</button>
+</form>
+
+<%- include('../partials/footer') %>

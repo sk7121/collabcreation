@@ -1,0 +1,21 @@
+<%- include('../partials/header', { title: "Register" }) %>
+
+<div class="auth-box">
+  <h2>Create Account</h2>
+
+  <form action="/register" method="POST">
+    <input type="text" name="name" placeholder="Full Name" required />
+    <input type="email" name="email" placeholder="Email" required />
+
+    <select name="role" required>
+      <option value="">Select Role</option>
+      <option value="creator">Creator</option>
+      <option value="brand">Brand</option>
+    </select>
+
+    <input type="password" name="password" placeholder="Password" required />
+    <button>Create Account</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

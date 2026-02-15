@@ -1,0 +1,17 @@
+<%- include('../partials/header', { title: "Create Project" }) %>
+
+
+<h2>Create Collaboration Project</h2>
+
+<form action="/projects" method="POST">
+  <input type="text" name="title" placeholder="Project Title" required />
+  <textarea name="description" placeholder="Project Description"></textarea>
+
+  <input type="text" name="skills" placeholder="Required Skills" />
+  <input type="number" name="budget" placeholder="Budget" required />
+  <input type="date" name="deadline" required />
+
+  <button>Create Project</button>
+</form>
+
+<%- include('../partials/footer') %>

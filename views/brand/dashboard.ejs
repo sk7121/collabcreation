@@ -1,0 +1,17 @@
+<%- include('../partials/header', { title: "Brand Dashboard" }) %>
+
+<h2>Brand Dashboard</h2>
+
+<a href="/brand/projects/new" class="btn">+ Create Project</a>
+
+<h3>Your Projects</h3>
+
+<% projects.forEach(project => { %>
+<div class="card brand-card">
+  <h4><%= project.title %></h4>
+  <p>Status: <%= project.status %></p>
+  <a href="/brand/projects/<%= project._id %>">View</a>
+</div>
+<% }) %>
+
+<%- include('../partials/footer') %>
